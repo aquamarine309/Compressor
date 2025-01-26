@@ -1,3 +1,12 @@
+const TUTORIAL_STATE = {
+  DIM1: 0,
+  DIM2: 1,
+  TICKSPEED: 2,
+  DIMBOOST: 3,
+  GALAXY: 4,
+  AUTOMATOR: 5
+};
+
 const speedrunMilestones = [
   "firstBoost",
   "firstGalaxy",
@@ -965,12 +974,6 @@ const migrations = {
         player.lastTenRuns[i][2] = player.lastTenRuns[i][0];
       }
       player.options.newUI = false;
-      window.uiChoiceModalInterval = setInterval(() => {
-        if (GameUI.initialized) {
-          Modal.uiChoice.show();
-          clearInterval(window.uiChoiceModalInterval);
-        }
-      }, 1000);
 
       migrations.normalizeTimespans(player);
       migrations.convertAutobuyerMode(player);

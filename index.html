@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>反物质维度存档压缩器</title>
+  <title>HTML</title>
   
   <!-- HTML -->
   
@@ -20,6 +20,12 @@
     <br>
     <br>
     <textarea readonly class="output">{{ output }}</textarea>
+    <br>
+    <div>
+      压缩前: {{ text.length }} 个字符
+      <br>
+      压缩后: {{ output ? output.length : 0 }} 个字符
+    </div>
   </div>
   <script src="vue.js"></script>
   <script src="break_infinity.js"></script>

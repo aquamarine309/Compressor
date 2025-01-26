@@ -27,7 +27,7 @@ function clearPlayer(data, def) {
       for (const property in data) {
         if (data[property] === void 0) continue;
         const cleared = clearPlayer(data[property], def?.[property]);
-        if (cleared !== void 0 && (typeof cleared !== "object" || Object.keys(cleared).length !== 0)) {
+        if (cleared !== void 0 && cleared !== null && (typeof cleared !== "object" || Object.keys(cleared).length !== 0)) {
           newObject[property] = cleared;
         }
       }

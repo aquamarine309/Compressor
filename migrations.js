@@ -7,6 +7,16 @@ const TUTORIAL_STATE = {
   AUTOMATOR: 5
 };
 
+function countValuesFromBitmask(bitmask) {
+  let numEffects = 0;
+  let bits = bitmask;
+  while (bits !== 0) {
+    numEffects += bits & 1;
+    bits >>= 1;
+  }
+  return numEffects;
+}
+
 const speedrunMilestones = [
   "firstBoost",
   "firstGalaxy",
@@ -1794,7 +1804,7 @@ const migrations = {
     // spacing removed. There was something strange with variable scoping that was causing player.news.seen to be
     // updated within NewsHandler, but then immediately becoming empty again once we were back at this level of
     // function calls (ie. out of the scope of NewsHandler). Sloppy, but nevertheless it does seem to work.
-    const maskLength = NewsHandler.BITS_PER_MASK;
+    const maskLength = 31;
     for (const id of oldNewsArray) {
       const groups = id.match(/([a-z]+)(\d+)/u);
       const type = groups[1];
@@ -1804,7 +1814,12 @@ const migrations = {
       player.news.seen[type][Math.floor(number / maskLength)] |= 1 << (number % maskLength);
     }
 
-    player.news.totalSeen = NewsHandler.uniqueTickersSeen;
+    player.news.totalSeen = 0;
+    for (const bitmaskArray of Object.values(player.news.seen)) {
+      for (const bitmask of bitmaskArray) {
+        player.news.totalSeen += countValuesFromBitmask(bitmask);
+      }
+    }
     delete player.newsArray;
   },
 

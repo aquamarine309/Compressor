@@ -1359,11 +1359,11 @@ const migrations = {
 
   fixChallengeIds(player) {
     let wasFucked = false;
+    const legacyIds = [1, 2, 3, 8, 6, 10, 9, 11, 5, 4, 12, 7];
     function unfuckChallengeId(id) {
       if (!id.startsWith("challenge")) return id;
       wasFucked = true;
       const legacyId = parseInt(id.substr(9), 10);
-      const legacyIds = [1, 2, 3, 8, 6, 10, 9, 11, 5, 4, 12, 7];
       const config = legacyIds.find(id => id === legacyId);
       return `challenge${config.id}`;
     }

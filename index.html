@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>反物质维度存档压缩器</title>
+  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" placeholder="存档" v-model="text"> <button @click="copy" class="btn">复制</button>
+    <br>
+    <br>
+    <textarea readonly class="output">{{ output }}</textarea>
+  </div>
+  <script src="vue.js"></script>
+  <script src="break_infinity.js"></script>
+  <script src="pako.js"></script>
+  <script src="extensions.js"></script>
+  <script src="constants.js"></script>
+  <script src="player.js"></script>
+  <script src="serializer.js"></script>
+  <script src="deepmerge.js"></script>
+  <script src="migrations.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
